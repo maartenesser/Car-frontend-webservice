@@ -1,0 +1,41 @@
+
+.card_create {
+    /*margin: 0 auto;*/
+    padding: 30px;
+    margin-bottom: 50px;
+    color: rgb(46, 125, 50);
+    background: rgb(200, 230, 201);
+}
+
+#create-product {
+    margin: 0 auto;
+}
+
+.form-control {
+    margin-top: 10px
+}
+
+.create-button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-container .form-title {
+    font-size: 25px;
+}
+
+.creat_input {
+    border-color: black;
+}
+label {
+    font-weight: bold;
+}
+.waring {
+    color: darkorange;
+    font-weight: bold;
+}
+.good {
+    color: darkblue;
+    font-weight: bold;
+
+}

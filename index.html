@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto_api</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <img class="img-fluid"
+             src="http://dvqlxo2m2q99q.cloudfront.net/000_clients/274546/page/h800-274546163425YfI.jpg"
+             alt="James Heyworth">
+        <h1>Car API</h1>
+        <create-product inline-template>
+            <div id="create-product" class="form-container">
+                <div class="card card_create">
+                    <div class="form-group">
+                        <div class="form-title">
+                            <span> Add Car </span>
+                        </div>
+                        <div class="input-container justify-content-center">
+
+                                <span class="req-input valid">
+                                <label>
+                                    <span class="input-status" data-toggle="tooltip" data-placement="top"
+                                          title="Input the car brand."></span>
+                                    <input v-model="brand" type="text" class="form-control creat_input"
+                                           placeholder="Car brand">
+                                </label>
+                                </span>
+
+
+                            <span class="req-input valid">
+                                <label>
+                                    <span class="input-status" data-toggle="tooltip" data-placement="top"
+                                          title="Input the car model"> </span>
+                                    <input v-model='model' type="text" class="form-control creat_input"
+                                           placeholder="Car model">
+                                </label>
+                                </span>
+
+
+                            <span class="req-input valid">
+                                <label>
+                                    <span class="input-status" data-toggle="tooltip" data-placement="top"
+                                          title="Input the car price"> </span>
+                                    <input v-model='price' type="text" class="form-control creat_input"
+                                           placeholder="Car price">
+                                </label>
+                                </span>
+                            <button v-on:click='create' class="btn btn-primary">Add</button>
+                            <span class="waring">{{warning}}</span>
+                            <span class="good" >{{created}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </create-product>
+
+        <div v-if="products">
+            <div class="container">
+                <div class="row hidden-md-up">
+                    <div id="product" class="col-md-4" v-for="product in products">
+
+                        <product inline-template v-bind:product-id='product.id' v-bind:product-brand='product.brand'
+                                 v-bind:product-model='product.model' v-bind:product-price='product.price'>
+                            <div v-if='!isDeleted'>
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Brand: {{productBrand}}</h4>
+                                            <br>
+                                            <h5 class="card-subtitle text-muted">Model: {{productModel}}</h5>
+                                            <h5 class="card-text">Price: {{productPrice}}</h5>
+                                            <br>
+                                            <button class="btn btn-outline-danger" v-on:click='deleteItem'>Delete
+                                            </button>
+                                            <a v-on:click='dropDown' class="text-info">Detail ↓
+                                            </a>
+                                            <span v-if='open'>
+                                            <br><br>
+                                            <form>
+                                                <div class="form-group">
+                                                <label for="brand">Brand: </label>
+                                                <input id="brand" v-model='productBrand' type="text"
+                                                       class="form-control"
+                                                       v-bind:value="productBrand">
+                                                </div>
+
+                                                <div class="form-group">
+                                                <label>Model: </label>
+                                                <input v-model='productModel' type="text" class="form-control"
+                                                       v-bind:value="productModel">
+                                                </div>
+
+                                                <div class="form-group">
+                                                <label>Price: </label>
+                                                <input v-model='productPrice' type="text" class="form-control"
+                                                       v-bind:value="productPrice">
+                                                <div>
+                                                    <br>
+                                                </div>
+                                                    <buttom class="btn btn-outline-warning" v-on:click='edit'>Edit</buttom>
+                                                </div>
+                                            </form>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </product>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="page-footer font-small">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        <p> Maarten Esser - 0899740</p>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.5.3/vue-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
